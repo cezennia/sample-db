@@ -23,11 +23,11 @@ var uuid = require('uuid/v1');
 // };
 
 var no_of_credits = 240;
-var no_of_adbasadors = 40000;
+var no_of_adbasadors = 800;
 
 var json_file = [];
 
-var no_user_ad_per_user = 1;
+var no_user_ad_per_user = 10;
 
 /**
  * Return random number of a particular length of digits
@@ -38,22 +38,23 @@ function getRandomDigits (length) {
 
 
 function createAdForUser () {
+    var temp_phone = getRandomDigits(11);
 
-    var temp = {
-        "_id" : uuid(),
-        "phone" : getRandomDigits(11),
-        "advertid" : "Sandos",
-        "adverturl" : "https://res.cloudinary.com/dw0fs7sj7/image/upload//w_660,h_640/l_text:Cabin_18:more%20%40%20jist.me%252Fsandos,g_south,y_-20/v1516545359/vgafvowcp5ohkh1nmpwi.jpg",
-        "issample" : false,
-        "isprofilepic" : true,
-        "channel" : "whatsapp",
-        "expires" : new Date(),
-        "runsuntil" : new Date(),
-        credits: []
-    }
 
     for (var i = 0; i < no_user_ad_per_user; i++) {
 
+        var temp = {
+            "_id" : uuid(),
+            "phone" : temp_phone,
+            "advertid" : "Sandos",
+            "adverturl" : "h",
+            "issample" : false,
+            "isprofilepic" : true,
+            "channel" : "whatsapp",
+            "expires" : new Date(),
+            "runsuntil" : new Date(),
+            credits: []
+        }
 
         for (var j = 0; j < no_of_credits; j++) {
             temp.credits.push({
@@ -63,17 +64,20 @@ function createAdForUser () {
                     "points" : 0
                 });
         }
+
+        json_file.push(temp);
     }
 
-    json_file.push(temp);
+
 }
 
 function createMultipleAds () {
     for (var h = 0; h < no_of_adbasadors; h++) {
         createAdForUser();
+        console.log("Done: " + h);
     }
 
-    fs.writeFileSync('./json-file.json', JSON.stringify(json_file, null, 2), 'utf-8');
+    fs.writeFileSync('./json-file.json', JSON.stringify(json_file), 'utf-8');
     console.log("Generated file can be found in json-file.json");
 }
 
