@@ -27,7 +27,7 @@ var no_of_adbasadors = 800;
 
 var json_file = [];
 
-var no_user_ad_per_user = 10;
+var no_user_ad_per_user = 10
 
 /**
  * Return random number of a particular length of digits
@@ -47,7 +47,7 @@ function createAdForUser () {
             "_id" : uuid(),
             "phone" : temp_phone,
             "advertid" : "Sandos",
-            "adverturl" : "h",
+            "adverturl" : "https://res.cloudinary.com/dw0fs7sj7/image/upload//w_660,h_640/l_text:Cabin_18:more%20%40%20jist.me%252Fsandos,g_south,y_-20/v1516545359/vgafvowcp5ohkh1nmpwi.jpg",
             "issample" : false,
             "isprofilepic" : true,
             "channel" : "whatsapp",
@@ -60,7 +60,7 @@ function createAdForUser () {
             temp.credits.push({
                     "_id" : uuid(),
                     "addedon" : new Date(),
-                    "dou" : 400,
+                    "dou" : getRandomDigits(2)*10,
                     "points" : 0
                 });
         }
